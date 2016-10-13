@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{FF044C57-09D9-479D-9564-A9765F2BAE7F}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>BotFramework.UI</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ActivityTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CardTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ActivityView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BindingsExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\CardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\HeroCardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\ReceiptCardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\SignInCardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\ThumbnailCardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ChatButton.xaml.cs">
+      <DependentUpon>..\..\..\samples\BotChatForms\BotChatForms\Views\Views\ChatButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\IMessageContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MessageView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ChatButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+  </ItemGroup>
+</Project>

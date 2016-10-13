@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BotFramework.UI.ChatButton">
+	<Frame Padding="2">
+		<StackLayout Orientation="Horizontal">
+			<Image Source="{Binding Image}"></Image>
+			<Label Text="{Binding Title}" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+		</StackLayout>
+	</Frame>
+</ContentView>
