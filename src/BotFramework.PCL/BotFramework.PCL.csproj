@@ -33,8 +33,17 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleAuth">
-      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.23\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
+      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.29\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -42,4 +51,5 @@
   </ItemGroup>
   <Import Project="..\BotFramework\BotFramework.projitems" Label="Shared" Condition="Exists('..\BotFramework\BotFramework.projitems')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

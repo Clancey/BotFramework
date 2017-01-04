@@ -15,7 +15,7 @@
 				<ColumnDefinition Width="5*" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
-			<Button Text="+" Grid.Column="0" />
+			<Button Text="+" Grid.Column="0" Clicked="AddPhoto" />
 			<Entry x:Name="Text" Grid.Column="1" />
 			<Button Text="Send" Clicked="SendMessage" Grid.Column="2" />
 		</Grid>

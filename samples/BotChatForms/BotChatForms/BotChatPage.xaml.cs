@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections;
 using BotFramework;
+using Plugin.Media;
+using System.IO;
 
 namespace BotChatForms
 {
@@ -43,14 +45,25 @@ namespace BotChatForms
 
 		async Task StartConversation ()
 		{
-			currentConversation = await ConversationManager.StartConversation (name, "R9i5KxgSHDg.cwA.r8A.SV1JeSldHUIsRVgUm6L0qH29NvPRmTT4vZg6m171hOs");
+			currentConversation = await ConversationManager.StartConversation (name, "WfnLyhBjpIE.cwA.VWI.hlOZgHQO2ceQFi0bBPV7cmA55PKBam-rd1arfgSj5nE");
+			currentConversation.CardActionTapped = HandleCardActionTapped;
 			MessageList.ItemsSource = currentConversation.Conversation.Messages;
 			StartStopButton.Text = "End Conversation";
 		}
 
+		void HandleCardActionTapped (CardAction action)
+		{
+			switch (action.Type) {
+			case CardActionType.OpenUrl:
+				Device.OpenUri (new Uri (action.Value));
+				break;
+			}
+			Console.WriteLine ($"Unhandled tap: {action.Value}");
+		}
 		async Task EndConversation ()
 		{
 			await currentConversation.EndConversation ();
+			currentConversation.CardActionTapped = null;
 			currentConversation = null;
 			MessageList.ItemsSource = null;
 			StartStopButton.Text = "Start Conversation";
@@ -67,24 +80,26 @@ namespace BotChatForms
 			Text.Text = "";
 		}
 
-		//async void AddPhoto (object sender, System.EventArgs e)
-		//{
-		//	Task startTask = null;
-		//	if (App.Api.CurrentConversation == null) {
-		//		startTask = StartConversation ();
-		//	}
-		//	try {
-		//		var photo = await CrossMedia.Current.PickPhotoAsync ();
+		async void AddPhoto (object sender, System.EventArgs e)
+		{
+			Task startTask = null;
+			if (currentConversation == null) {
+				startTask = StartConversation ();
+			}
+			try {
+				var photo = await CrossMedia.Current.PickPhotoAsync ();
 
-		//		if (!(startTask?.IsCompleted ?? true))
-		//			await startTask;
-		//		//var data = DependencyService.Get<IFileLoader> ().ReadAllBytes (photo.Path);
+				if (!(startTask?.IsCompleted ?? true))
+					await startTask;
+				
+				var fileName = Path.GetFileName (photo.Path);
+				var extension = Path.GetExtension (photo.Path).TrimStart('.');
+				var type = $"image/{extension}";
 
-		//		var s = await App.Api.UploadMessageAttachment (App.Api.CurrentConversation.Id, new Attachment { DocType = "image", Url = photo.Path});
-		//		Console.WriteLine (s);
-		//	} catch (Exception ex) {
-		//		Console.WriteLine (ex);
-		//	}
-		//}
+				await currentConversation.UploadAttachment (fileName, type, photo.GetStream ());
+			} catch (Exception ex) {
+				Console.WriteLine (ex);
+			}
+		}
 	}
 }

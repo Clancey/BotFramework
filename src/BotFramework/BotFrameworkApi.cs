@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -40,11 +42,11 @@ namespace BotFramework
 		{
 			throw new NotImplementedException ();
 		}
-
+		 
 	}
-	public class JsonActivityConverter : JsonCreationConverter<ActivityBase>
+	public class JsonActivityConverter : JsonCreationConverter<BotActivity>
 	{
-		protected override ActivityBase Create (System.Type objectType, JObject jsonObject, JsonReader reader)
+		protected override BotActivity Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{
 			try {
 				JToken token;
@@ -55,11 +57,11 @@ namespace BotFramework
 						return new Message ();
 					}
 				}
-				return new ActivityBase ();
+				return new BotActivity ();
 			} catch (Exception ex) {
 				Console.WriteLine (ex);
 			}
-			return new ActivityBase ();
+			return new BotActivity ();
 		}
 	}
 	public class Conversation : IdClass
@@ -70,16 +72,28 @@ namespace BotFramework
 		[JsonProperty ("token", NullValueHandling = NullValueHandling.Ignore)]
 		public string Token { get; set; }
 
+		int expiresIn;
+        [Newtonsoft.Json.JsonProperty ("expires_in")]
+		public int ExpiresIn {
+			get { return expiresIn;}
+			set {
+				expiresIn = value;
+				//Since the bot framework will not let you refresh expired tokens, we will say they expire before they do.
+				TokenExpiredDate = DateTime.Now.AddSeconds(value - (value *.1));
+			}
+		}
+
+		public DateTime TokenExpiredDate { get; private set; }
+
+		public bool IsTokenValid => !string.IsNullOrWhiteSpace (Token) && TokenExpiredDate > DateTime.Now;
 
 		[JsonProperty ("streamUrl", NullValueHandling = NullValueHandling.Ignore)]
 		public string StreamUrl { get; set; }
 
-		public int Expiration { get; set; }
-
 		[JsonProperty ("ETag", NullValueHandling = NullValueHandling.Ignore)]
 		public string ETag { get; set; }
 
-		public ObservableCollection<ActivityBase> Messages { get; private set; } = new ObservableCollection<ActivityBase> ();
+		public ObservableCollection<BotActivity> Messages { get; private set; } = new ObservableCollection<BotActivity> ();
 
 
 		[JsonProperty ("watermark", NullValueHandling = NullValueHandling.Ignore)]
@@ -88,7 +102,7 @@ namespace BotFramework
 		public string MyName { get; set; }
 	}
 
-	public class Message : ActivityBase
+	public class Message : BotActivity
 	{
 		public Message ()
 		{
@@ -105,24 +119,36 @@ namespace BotFramework
 
 		[JsonProperty ("attachments", NullValueHandling = NullValueHandling.Ignore)]
 		public Attachment [] Attachments { get; set; }
+        
+        [Newtonsoft.Json.JsonProperty ("entities")]
+		public Entity [] Entities { get; set; }
 
+		[JsonIgnore]
 		public bool HasAttachments => Attachments?.Length > 0;
-
-		[JsonExtensionData]
-		[JsonProperty (NullValueHandling = NullValueHandling.Ignore)]
-		public IDictionary<string, JToken> AdditionalData;
-
 
 		[JsonProperty ("replyToId")]
 		public string ReplyToId { get; set; }
 	}
 
-	public class IdClass {
+	public class IdClass
+	{
 		public string Id { get; set; }
 	}
 
+	public class ChannelAccount : IdClass
+	{
+
+		[Newtonsoft.Json.JsonProperty ("name")]
+		public string Name { get; set; }
+	}
+	public class ConversationAccount : ChannelAccount
+	{
+		[Newtonsoft.Json.JsonProperty ("isGroup")]
+		public bool IsGroup { get; set; }
+	}
+
 	[JsonConverter (typeof (JsonActivityConverter))]
-	public class ActivityBase : IdClass
+	public class BotActivity : IdClass
 	{
 		[JsonProperty ("type")]
 		public string Type { get; set; }
@@ -132,51 +158,64 @@ namespace BotFramework
 		[JsonProperty ("channelId")]
 		public string ChannelId { get; set; } = "directline";
 
-		public IdClass Conversation { get; set; }
+		public ChannelAccount Conversation { get; set; }
 
+		[JsonIgnore]
 		public string ConversationId {
 			get { return Conversation?.Id; }
-			set { Conversation = new IdClass { Id = value }; }
+			set { Conversation = new ChannelAccount { Id = value }; }
 		}
 
-		public IdClass From {get;set;}
+		public ChannelAccount From { get; set; }
 
+		[Newtonsoft.Json.JsonProperty ("timestamp")]
+		public string Timestamp { get; set; }
+
+		[JsonIgnore]
 		public string FromId {
-			get { return From?.Id;}
-			set { From = new IdClass { Id = value }; }
+			get { return From?.Id; }
+			set { From = new ChannelAccount { Id = value }; }
 		}
 
 
 		[JsonIgnore]
 		public bool IsFromMe { get; set; }
 
+		[JsonExtensionData]
+		[JsonProperty (NullValueHandling = NullValueHandling.Ignore)]
+		public IDictionary<string, JToken> AdditionalData;
 	}
 
-	public class MessagesResponse
+	public class BotActivitySet
 	{
-		public ActivityBase [] Activities { get; set; }
+		public BotActivity [] Activities { get; set; }
 		public string WaterMark { get; set; }
-		public string ETag { get; set; }
 	}
 
 	public class BotFrameworkApi : Api
 	{
 		protected readonly string Secret;
-		public BotFrameworkApi (string secret, HttpMessageHandler handler = null) : base ("botFramework", handler) //base ("botFramework", null, handler)
+		public BotFrameworkApi (string secret, HttpMessageHandler handler = null) : base ("botFramework",secret, handler)
 		{
 			Secret = key = secret;
-			BaseAddress = new Uri ("https://ic-dandris-scratch.azurewebsites.net/v3/directline/");
+			BaseAddress = new Uri ("https://directline.botframework.com/v3/directline/");
 			this.Verbose = true;
-
-			//this.CurrentShowAuthenticator = (BasicAuthAuthenticator obj) => {
-
-			//};	
 		}
 		public override void OnException (object sender, Exception ex)
 		{
 			base.OnException (sender, ex);
-			Console.WriteLine (ex);
+			PrintDeepException (ex);
 		}
+
+		void PrintDeepException (Exception ex)
+		{
+			if (ex == null)
+				return;
+
+			Console.WriteLine (ex);
+			PrintDeepException (ex?.InnerException);
+		}
+
 		string key;
 
 		public override async Task PrepareClient (HttpClient client)
@@ -185,9 +224,24 @@ namespace BotFramework
 			Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue ("Bearer", key);
 		}
 
+		protected override async Task VerifyCredentials ()
+		{
+			if (!CurrentConversation?.IsTokenValid ?? false) {
+				var resp = await this.RenewConversationToken ();
+				if (resp == null)
+					return;
+				CurrentConversation.Token = resp.Token;
+				CurrentConversation.ExpiresIn = resp.ExpiresIn;
+				CurrentConversation.Id = resp.Id;
+				CurrentConversation.StreamUrl = resp.StreamUrl;
+				await PrepareClient (Client);
+			}
+		}
+
 		public Conversation CurrentConversation { get; private set; }
 
 		[Path ("conversations")]
+		[Accepts ("application/json")]
 		public async Task<Conversation> StartConversation (string name)
 		{
 			//Always use main key to start a convo
@@ -212,7 +266,7 @@ namespace BotFramework
 		}
 
 		[Path ("conversations/{conversationId}/activities")]
-		public Task<MessagesResponse> GetMessages (string conversationId, string watermark = null)
+		public Task<BotActivitySet> GetMessages (string conversationId, string watermark = null)
 		{
 			var parameters = new Dictionary<string, string> {
 				{"conversationId",conversationId}
@@ -220,7 +274,7 @@ namespace BotFramework
 			if (!string.IsNullOrWhiteSpace (watermark))
 				parameters.Add ("watermark", watermark);
 
-			return Get<MessagesResponse> (queryParameters: parameters);
+			return Get<BotActivitySet> (queryParameters: parameters);
 		}
 
 		[Path ("conversations/{conversationId}/activities")]
@@ -240,7 +294,7 @@ namespace BotFramework
 		}
 
 		[Path ("conversations/{conversationId}/activities")]
-		public async Task<bool> SendActivity (string conversationId, ActivityBase message)
+		public async Task<bool> SendActivity (string conversationId, BotActivity message)
 		{
 			try {
 				var resp = await Post (message, queryParameters: new Dictionary<string, string> { { "conversationId", conversationId } });
@@ -253,10 +307,15 @@ namespace BotFramework
 		}
 
 		[Path ("conversations/{conversationId}/upload")]
-		public async Task<bool> UploadMessageAttachment (string conversationId, byte [] data)
+		public async Task<bool> UploadMessageAttachment (string conversationId,string userid, string fileName,string contentType , byte [] data)
 		{
 			try {
-				var resp = await Post (new ByteArrayContent (data), queryParameters: new Dictionary<string, string> { { "conversationId", conversationId } });
+				var content = new MultipartFormDataContent ();
+				content.Add( new ByteArrayContent (data), "file", fileName);
+				content.Headers.ContentType = MediaTypeHeaderValue.Parse (contentType);
+
+				var resp = await Post (content,
+				                       queryParameters: new Dictionary<string, string> { { "conversationId", conversationId }, { "userId", userid } } );
 				Console.WriteLine (resp);
 				return true;
 			} catch (Exception ex) {
@@ -264,13 +323,17 @@ namespace BotFramework
 			}
 			return false;
 		}
-
 
 		[Path ("conversations/{conversationId}/upload")]
-		public async Task<bool> UploadMessageAttachment (string conversationId, Attachment attachment)
+		public async Task<bool> UploadMessageAttachment (string conversationId, string userid, string fileName, string contentType, Stream stream)
 		{
 			try {
-				var resp = await Post (attachment, queryParameters: new Dictionary<string, string> { { "conversationId", conversationId } });
+				var content = new MultipartFormDataContent ();
+				content.Add (new StreamContent (stream), "file", fileName);
+				content.Headers.ContentType = MediaTypeHeaderValue.Parse (contentType);
+
+				var resp = await Post (content,
+									   queryParameters: new Dictionary<string, string> { { "conversationId", conversationId }, { "userId", userid } });
 				Console.WriteLine (resp);
 				return true;
 			} catch (Exception ex) {
@@ -279,18 +342,17 @@ namespace BotFramework
 			return false;
 		}
 
-
-		[Path ("tokens/{conversationId}/renew")]
-		public async Task<bool> RenewConversationToken (string conversationId)
+		[Path ("tokens/refresh")]
+		public async Task<Conversation> RenewConversationToken ()
 		{
 			try {
-				var resp = await Get (queryParameters: new Dictionary<string, string> { { "conversationId", conversationId } });
+				var resp = await Post<Conversation> (body:null, authenticated: false);
 				Console.WriteLine (resp);
-				return true;
+				return resp;
 			} catch (Exception ex) {
 				this.OnException (this, ex);
 			}
-			return false;
+			return null;
 		}
 
 		[Path ("tokens/generate")]

@@ -22,7 +22,8 @@ namespace BotFramework.UI
 
 		void HandleTap (object arg)
 		{
-			Console.WriteLine ("Tapped");
+			var action = BindingContext as CardAction;
+			action?.ActionHandler?.HandleTap (action);
 		}
 		public bool IsFromMe { get; set; }
 	}

@@ -24,10 +24,20 @@ namespace BotFramework
 		public string SubTitle { get; set; }
 	}
 
+	public enum CardActionType
+	{
+		ImBack,
+		OpenUrl,
+		PlayAudio,
+		PlayVideo,
+		PostBack,
+		SignIn
+	}
+
 	public class CardAction
 	{
 		[JsonProperty ("type")]
-		public string Type { get; set; }
+		public CardActionType Type { get; set; }
 
 		[JsonProperty ("title")]
 		public string Title { get; set; }
@@ -37,6 +47,21 @@ namespace BotFramework
 
 		[JsonProperty ("value")]
 		public string Value { get; set; }
+
+		WeakReference parent;
+		[JsonIgnore]
+		public Card Parent { 
+			get { return parent?.Target as Card; }
+			set { parent = new WeakReference (value);}
+		}
+
+
+		WeakReference actionHandler;
+		[JsonIgnore]
+		public CardActionHandler ActionHandler { 
+			get { return actionHandler?.Target as CardActionHandler; }
+			set { actionHandler = new WeakReference (value);}
+		}
 	}
 	public class CardImage
 	{

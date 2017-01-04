@@ -34,8 +34,10 @@ namespace BotFramework.UI
 				return signInTemplate;
 			case ThumbnailCard.ContentType:
 				return thumbnailTemplate;
+			case AnimationCard.ContentType:
+				return heroCardTemplate;
 			default:
-				return defaultTemplate;
+				return heroCardTemplate;
 			}
 		}
 

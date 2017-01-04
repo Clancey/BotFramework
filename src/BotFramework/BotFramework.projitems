@@ -24,5 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Cards\ThumbnailCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConversationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BotFrameworkApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Cards\MediaCard.cs" />
   </ItemGroup>
 </Project>

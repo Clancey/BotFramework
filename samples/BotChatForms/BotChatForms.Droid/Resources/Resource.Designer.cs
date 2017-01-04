@@ -26,7 +26,6 @@ namespace BotChatForms.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::BotChatForms.Droid.Resource.Attribute.actionBarSize;
 			global::SimpleAuth.Resource.Id.loginButton = global::BotChatForms.Droid.Resource.Id.loginButton;
 			global::SimpleAuth.Resource.Id.password = global::BotChatForms.Droid.Resource.Id.password;
 			global::SimpleAuth.Resource.Id.username = global::BotChatForms.Droid.Resource.Id.username;

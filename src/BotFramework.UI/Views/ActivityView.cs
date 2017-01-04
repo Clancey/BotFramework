@@ -74,7 +74,7 @@ namespace BotFramework.UI
 
 		protected virtual void SetupView ()
 		{
-			var activity = BindingContext as ActivityBase;
+			var activity = BindingContext as BotActivity;
 			if (activity == null)
 				return;
 			//var view = (View)Activator.CreateInstance (typeof (MessageView));

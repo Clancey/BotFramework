@@ -50,5 +50,7 @@
 	<string>LaunchScreen.storyboard</string>
 	<key>CFBundleName</key>
 	<string>BotChat</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library.</string>
 </dict>
 </plist>
