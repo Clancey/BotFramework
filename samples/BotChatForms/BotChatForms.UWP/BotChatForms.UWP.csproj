@@ -127,12 +127,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\BotFramework.UWP\BotFramework.UWP.csproj">
-      <Project>{1e9fd2e9-eb56-416a-8efc-b9399580f0ef}</Project>
-      <Name>BotFramework.UWP</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

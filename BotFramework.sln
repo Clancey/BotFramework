@@ -1,26 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{613CA06B-B40D-4428-B552-D4CC0F30C684}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8582458-13E4-4FD2-B945-EE11A7D0C3B3}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BotFramework.NET", "src\BotFramework.NET\BotFramework.NET.xproj", "{03D49F11-B7C4-4EA1-92CA-65C2F7305ADD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A7942B62-D32B-415C-AFEA-1F07CEA772C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotFramework.NET", "src\BotFramework.NET\BotFramework.NET.csproj", "{03D49F11-B7C4-4EA1-92CA-65C2F7305ADD}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BotFramework", "src\BotFramework\BotFramework.shproj", "{65DFE5AA-300D-40E8-82A2-B6DB7D72EEC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotFramework.iOS", "src\BotFramework.iOS\BotFramework.iOS.csproj", "{FD943C15-8BFC-48B4-BEA2-9B866D22B10D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotFramework.UWP", "src\BotFramework.UWP\BotFramework.UWP.csproj", "{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotFramework.Droid", "src\BotFramework.Droid\BotFramework.Droid.csproj", "{CE8ACC9E-F539-4535-85E8-690CA46CB26A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A7942B62-D32B-415C-AFEA-1F07CEA772C1}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BotChatForms", "samples\BotChatForms\BotChatForms\BotChatForms.shproj", "{94429381-CDDB-43A3-B249-62F960E74F4C}"
 EndProject
@@ -36,14 +31,17 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BotFramework.UI", "src\BotF
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\BotFramework\BotFramework.projitems*{1e9fd2e9-eb56-416a-8efc-b9399580f0ef}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{65dfe5aa-300d-40e8-82a2-b6db7d72eec7}*SharedItemsImports = 13
 		samples\BotChatForms\BotChatForms\BotChatForms.projitems*{8e7bb8be-e0d7-4d5b-b063-bee615696f6b}*SharedItemsImports = 4
 		samples\BotChatForms\BotChatForms\BotChatForms.projitems*{91896dc0-2109-4612-839a-ac06521667e5}*SharedItemsImports = 4
+		src\BotFramework.UI\BotFramework.UI.projitems*{91896dc0-2109-4612-839a-ac06521667e5}*SharedItemsImports = 4
 		samples\BotChatForms\BotChatForms\BotChatForms.projitems*{94429381-cddb-43a3-b249-62f960e74f4c}*SharedItemsImports = 13
 		samples\BotChatForms\BotChatForms\BotChatForms.projitems*{99346658-77a9-4bb6-b4c1-dd68be1d01af}*SharedItemsImports = 4
+		src\BotFramework.UI\BotFramework.UI.projitems*{99346658-77a9-4bb6-b4c1-dd68be1d01af}*SharedItemsImports = 4
+		src\BotFramework\BotFramework.projitems*{bfdd7ccb-cee4-42de-b9fd-3d30c5af1c57}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{ce8acc9e-f539-4535-85e8-690ca46cb26a}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{fd943c15-8bfc-48b4-bea2-9b866d22b10d}*SharedItemsImports = 4
+		src\BotFramework.UI\BotFramework.UI.projitems*{ff044c57-09d9-479d-9564-a9765f2bae7f}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -168,54 +166,6 @@ Global
 		{FD943C15-8BFC-48B4-BEA2-9B866D22B10D}.Release|x64.Build.0 = Release|Any CPU
 		{FD943C15-8BFC-48B4-BEA2-9B866D22B10D}.Release|x86.ActiveCfg = Release|Any CPU
 		{FD943C15-8BFC-48B4-BEA2-9B866D22B10D}.Release|x86.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|ARM.ActiveCfg = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|ARM.Build.0 = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|x64.ActiveCfg = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|x64.Build.0 = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|x86.ActiveCfg = Release|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Ad-Hoc|x86.Build.0 = Release|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|ARM.ActiveCfg = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|ARM.Build.0 = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|iPhone.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|iPhone.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|x64.ActiveCfg = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|x64.Build.0 = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|x86.ActiveCfg = Release|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.AppStore|x86.Build.0 = Release|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|ARM.ActiveCfg = Debug|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|ARM.Build.0 = Debug|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|x64.ActiveCfg = Debug|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|x64.Build.0 = Debug|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|x86.ActiveCfg = Debug|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Debug|x86.Build.0 = Debug|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|ARM.ActiveCfg = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|ARM.Build.0 = Release|ARM
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|iPhone.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|x64.ActiveCfg = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|x64.Build.0 = Release|x64
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|x86.ActiveCfg = Release|x86
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF}.Release|x86.Build.0 = Release|x86
 		{CE8ACC9E-F539-4535-85E8-690CA46CB26A}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8ACC9E-F539-4535-85E8-690CA46CB26A}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
 		{CE8ACC9E-F539-4535-85E8-690CA46CB26A}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
@@ -484,7 +434,6 @@ Global
 		{03D49F11-B7C4-4EA1-92CA-65C2F7305ADD} = {613CA06B-B40D-4428-B552-D4CC0F30C684}
 		{65DFE5AA-300D-40E8-82A2-B6DB7D72EEC7} = {613CA06B-B40D-4428-B552-D4CC0F30C684}
 		{FD943C15-8BFC-48B4-BEA2-9B866D22B10D} = {613CA06B-B40D-4428-B552-D4CC0F30C684}
-		{1E9FD2E9-EB56-416A-8EFC-B9399580F0EF} = {613CA06B-B40D-4428-B552-D4CC0F30C684}
 		{CE8ACC9E-F539-4535-85E8-690CA46CB26A} = {613CA06B-B40D-4428-B552-D4CC0F30C684}
 		{94429381-CDDB-43A3-B249-62F960E74F4C} = {A7942B62-D32B-415C-AFEA-1F07CEA772C1}
 		{91896DC0-2109-4612-839A-AC06521667E5} = {A7942B62-D32B-415C-AFEA-1F07CEA772C1}
