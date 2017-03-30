@@ -12,7 +12,7 @@ namespace BotFramework
 			string type = "";
 			try {
 				//This is ugly, but is the best way I could think of to get the type, which resides on the parent object.
-				var root = ((reader as JTokenReader).CurrentToken.Root as JObject).SelectToken(reader.Path.Replace(".content",""));
+				var root = ((reader as JTokenReader).CurrentToken.Root as JObject).SelectToken (reader.Path.Replace (".content", ""));
 				JToken token;
 				if ((root as JObject).TryGetValue ("contentType", StringComparison.CurrentCultureIgnoreCase, out token)) {
 					type = token.ToString ();
@@ -27,6 +27,10 @@ namespace BotFramework
 						return new ThumbnailCard ();
 					case AnimationCard.ContentType:
 						return new AnimationCard ();
+					case AudioCard.ContentType:
+						return new AudioCard ();
+					case VideoCard.ContentType:
+						return new VideoCard ();
 					}
 				}
 				return new Card ();
@@ -39,13 +43,13 @@ namespace BotFramework
 		{
 			try {
 				// This is ugly, but a few cards dont use json like Alerts...
-				if (reader.TokenType ==  JsonToken.String) {
+				if (reader.TokenType == JsonToken.String) {
 					var card = Create (objectType, null, reader);
 					card.Text = (string)new JValue (reader.Value);
 					return card;
 				}
 				//Set the card actions parents
-				return SetCardActionsParent(base.ReadJson (reader, objectType, existingValue, serializer) as Card);
+				return SetCardActionsParent (base.ReadJson (reader, objectType, existingValue, serializer) as Card);
 			} catch (Exception ex) {
 				Console.WriteLine (ex);
 			}

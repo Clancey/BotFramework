@@ -10,7 +10,7 @@ namespace BotFramework
 {
 	public interface CardActionHandler
 	{
-		void HandleTap (CardAction cardAction);
+		Task HandleTap (CardAction cardAction);
 	}
 	public class ConversationManager : CardActionHandler
 	{
@@ -148,7 +148,7 @@ namespace BotFramework
 			Conversation.Messages.Add (message);
 		}
 		public Action<CardAction> CardActionTapped { get; set; }
-		public virtual async void HandleTap (CardAction action)
+		public virtual async Task HandleTap (CardAction action)
 		{
 			switch (action.Type) {
 			case CardActionType.ImBack:

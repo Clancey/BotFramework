@@ -42,6 +42,10 @@ namespace BotFramework.UI
 
 		protected virtual void AddImages (Attachment attachment)
 		{
+			if (!string.IsNullOrWhiteSpace(attachment.ThumbnailUrl))
+			{
+				Children.Add(CreatImageView(attachment, nameof(attachment.ThumbnailUrl)));
+			};
 			if (attachment.Content?.Images == null)
 				return;
 			
@@ -50,11 +54,15 @@ namespace BotFramework.UI
 			}
 		}
 
-		protected virtual View CreateView (CardImage image)
+		protected virtual View CreateView(CardImage image)
+		{
+			return CreatImageView(image, nameof(image.Url));
+		}
+		protected virtual View CreatImageView (object imageBinding, string propertyName)
 		{
 			var view = new Image ();
-			view.BindingContext = image;
-			view.SetBinding (Image.SourceProperty, new Binding (nameof (image.Url)));
+			view.BindingContext = imageBinding;
+			view.SetBinding (Image.SourceProperty, new Binding (propertyName));
 			return view;
 		}
 
