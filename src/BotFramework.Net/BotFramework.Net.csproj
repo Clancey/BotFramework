@@ -8,4 +8,8 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
   <Import Project="..\BotFramework\BotFramework.projitems" Label="Shared" Condition="Exists('..\BotFramework\BotFramework.projitems')" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+  </ItemGroup>
 </Project>
