@@ -60,6 +60,12 @@ namespace BotChatForms
 			}
 			Console.WriteLine ($"Unhandled tap: {action.Value}");
 		}
+
+		void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+		{
+			var item = (BotActivity)e.Item;
+		}
+
 		async Task EndConversation ()
 		{
 			await currentConversation.EndConversation ();

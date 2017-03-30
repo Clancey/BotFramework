@@ -2,7 +2,7 @@
 <ContentPage xmlns:m="clr-namespace:BotChat" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BotFramework.UI" x:Class="BotChatForms.BotChatPage">
 	<StackLayout>
 		<Button x:Name="StartStopButton" Text="Start Conversation" Clicked="StartStopConversation" />
-		<ListView x:Name="MessageList" SeparatorVisibility="None" HasUnevenRows="true">
+		<ListView x:Name="MessageList" SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<local:ActivityViewCell/>
