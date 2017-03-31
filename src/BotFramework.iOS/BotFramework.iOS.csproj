@@ -41,7 +41,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SimpleAuth">
-      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.32\lib\Xamarin.iOS10\SimpleAuth.dll</HintPath>
+      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Xamarin.iOS10\SimpleAuth.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

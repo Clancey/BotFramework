@@ -46,7 +46,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SimpleAuth">
-      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.32\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
+      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

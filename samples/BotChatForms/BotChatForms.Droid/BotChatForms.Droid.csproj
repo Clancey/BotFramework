@@ -103,18 +103,18 @@
     <Reference Include="Plugin.Permissions">
       <HintPath>..\..\..\packages\Plugin.Permissions.1.2.1\lib\MonoAndroid10\Plugin.Permissions.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Media.Abstractions">
-      <HintPath>..\..\..\packages\Xam.Plugin.Media.2.6.2.22-beta\lib\MonoAndroid10\Plugin.Media.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Media">
-      <HintPath>..\..\..\packages\Xam.Plugin.Media.2.6.2.22-beta\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleAuth">
-      <HintPath>..\..\..\packages\Clancey.SimpleAuth.1.0.29\lib\MonoAndroid\SimpleAuth.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.1\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleAuth">
+      <HintPath>..\..\..\packages\Clancey.SimpleAuth.1.0.35\lib\MonoAndroid\SimpleAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\..\..\packages\Xam.Plugin.Media.2.6.3.8-beta\lib\MonoAndroid10\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\..\..\packages\Xam.Plugin.Media.2.6.3.8-beta\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

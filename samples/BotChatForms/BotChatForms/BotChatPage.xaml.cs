@@ -5,6 +5,7 @@ using System.Collections;
 using BotFramework;
 using Plugin.Media;
 using System.IO;
+using System.Diagnostics;
 
 namespace BotChatForms
 {
@@ -28,9 +29,9 @@ namespace BotChatForms
 				else
 					await EndConversation ();
 			} catch (Exception ex) {
-				Console.WriteLine (ex);
+				Debug.WriteLine (ex);
 				foreach (DictionaryEntry m in ex.Data)
-					Console.WriteLine ($"{m.Key} - {m.Value}");
+					Debug.WriteLine ($"{m.Key} - {m.Value}");
 			}
 		}
 
@@ -58,7 +59,7 @@ namespace BotChatForms
 				Device.OpenUri (new Uri (action.Value));
 				break;
 			}
-			Console.WriteLine ($"Unhandled tap: {action.Value}");
+			Debug.WriteLine ($"Unhandled tap: {action.Value}");
 		}
 
 		void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
@@ -104,7 +105,7 @@ namespace BotChatForms
 
 				await currentConversation.UploadAttachment (fileName, type, photo.GetStream ());
 			} catch (Exception ex) {
-				Console.WriteLine (ex);
+				Debug.WriteLine (ex);
 			}
 		}
 	}

@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Clancey.SimpleAuth" Version="1.0.33" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+    <PackageReference Include="Clancey.SimpleAuth" Version="1.0.35" />
   </ItemGroup>
 
 </Project>
