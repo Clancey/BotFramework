@@ -46,11 +46,15 @@ namespace BotFramework.UI
 			{
 				Children.Add(CreatImageView(attachment, nameof(attachment.ThumbnailUrl)));
 			};
-			if (attachment.Content?.Images == null)
-				return;
-			
-			foreach (var i in attachment.Content?.Images) {
-				Children.Add (CreateView (i));
+
+			if (attachment.Content?.Images != null) {
+				foreach (var i in attachment.Content?.Images) {
+					Children.Add (CreateView (i));
+				}
+			}
+
+			if ((attachment.ContentType?.StartsWith ("image") ?? false) && !string.IsNullOrWhiteSpace(attachment.Url)) {
+				Children.Add (CreateView (new CardImage { Url = attachment.Url }));
 			}
 		}
 
