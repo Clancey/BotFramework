@@ -57,6 +57,19 @@ namespace BotFramework
 			}
 		}
 
+		public override async Task<HttpResponseMessage> SendMessage (HttpRequestMessage message, bool authenticated = true, HttpCompletionOption completionOption = 0)
+		{
+			var resp = await base.SendMessage (message, authenticated, completionOption);
+			//When a token expires it does forbidden instead of Unauthrorized
+			if (resp.StatusCode == System.Net.HttpStatusCode.Forbidden) {
+				//Lets refresh auth and try again
+				await InvalidateCredentials ();
+				await VerifyCredentials ();
+				resp = await base.SendMessage (message, authenticated, completionOption);
+			}
+			return resp;
+		}
+
 		public Conversation CurrentConversation { get; private set; }
 
 		/// <summary>
