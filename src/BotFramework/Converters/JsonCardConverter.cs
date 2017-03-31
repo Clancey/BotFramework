@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -7,6 +8,16 @@ namespace BotFramework
 {
 	public class JsonCardConverter : JsonCreationConverter<Card>
 	{
+		public static Dictionary<string, Type> TypeMappings = new Dictionary<string, Type>
+		{
+			{HeroCard.ContentType,typeof(HeroCard)},
+			{ReceiptCard.ContentType,typeof(ReceiptCard)},
+			{SigninCard.ContentType,typeof(SigninCard)},
+			{ThumbnailCard.ContentType,typeof(ThumbnailCard)},
+			{AnimationCard.ContentType,typeof(AnimationCard)},
+			{AudioCard.ContentType,typeof(AudioCard)},
+			{VideoCard.ContentType,typeof(VideoCard)},
+		};
 		protected override Card Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{
 			string type = "";
@@ -16,22 +27,9 @@ namespace BotFramework
 				JToken token;
 				if ((root as JObject).TryGetValue ("contentType", StringComparison.CurrentCultureIgnoreCase, out token)) {
 					type = token.ToString ();
-					switch (type) {
-					case HeroCard.ContentType:
-						return new HeroCard ();
-					case ReceiptCard.ContentType:
-						return new ReceiptCard ();
-					case SigninCard.ContentType:
-						return new SigninCard ();
-					case ThumbnailCard.ContentType:
-						return new ThumbnailCard ();
-					case AnimationCard.ContentType:
-						return new AnimationCard ();
-					case AudioCard.ContentType:
-						return new AudioCard ();
-					case VideoCard.ContentType:
-						return new VideoCard ();
-					}
+					Type cardType = typeof(Card);
+					TypeMappings.TryGetValue(type, out cardType);
+					return (Card)Activator.CreateInstance(cardType);
 				}
 				return new Card ();
 			} catch (Exception ex) {

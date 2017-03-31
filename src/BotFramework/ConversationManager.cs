@@ -5,6 +5,7 @@ using System.Threading;
 using SimpleAuth;
 using System.Linq;
 using System.IO;
+using System.Diagnostics;
 
 namespace BotFramework
 {

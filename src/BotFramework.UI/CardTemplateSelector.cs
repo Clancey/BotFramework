@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace BotFramework.UI
@@ -6,39 +7,28 @@ namespace BotFramework.UI
 	public class CardTemplateSelector : Xamarin.Forms.DataTemplateSelector
 	{
 		protected DataTemplate defaultTemplate;
-		protected DataTemplate heroCardTemplate;
-		protected DataTemplate thumbnailTemplate;
-		protected DataTemplate receiptTemplate;
-		protected DataTemplate signInTemplate;
 		public CardTemplateSelector ()
 		{
 			defaultTemplate = new DataTemplate (typeof (Label));
-			heroCardTemplate = new DataTemplate (typeof (HeroCardView));
-			thumbnailTemplate = new DataTemplate (typeof (ThumbnailCardView));
-			receiptTemplate = new DataTemplate (typeof (ReceiptCardView));
-			signInTemplate = new DataTemplate (typeof (SignInCardView));
-
 		}
-
+		public static Dictionary<string, DataTemplate> TypeMappings = new Dictionary<string, DataTemplate>
+		{
+			{HeroCard.ContentType,new DataTemplate (typeof (HeroCardView))},
+			{ReceiptCard.ContentType,new DataTemplate (typeof (ReceiptCardView))},
+			{SigninCard.ContentType,new DataTemplate (typeof (SignInCardView))},
+			{ThumbnailCard.ContentType,new DataTemplate (typeof (ThumbnailCardView))},
+			//{AnimationCard.ContentType,typeof(AnimationCard)},
+			//{AudioCard.ContentType,typeof(AudioCard)},
+			//{VideoCard.ContentType,typeof(VideoCard)},
+		};
 		protected override DataTemplate OnSelectTemplate (object item, BindableObject container)
 		{
 			var messageVm = item as Attachment;
 			if (messageVm == null)
 				return null;
-			switch(messageVm.ContentType){
-			case HeroCard.ContentType:
-				return heroCardTemplate;
-			case ReceiptCard.ContentType:
-				return receiptTemplate;
-			case SigninCard.ContentType:
-				return signInTemplate;
-			case ThumbnailCard.ContentType:
-				return thumbnailTemplate;
-			case AnimationCard.ContentType:
-				return heroCardTemplate;
-			default:
-				return heroCardTemplate;
-			}
+			DataTemplate template = defaultTemplate;
+			TypeMappings.TryGetValue (messageVm.ContentType, out template);
+			return template;
 		}
 
 	}

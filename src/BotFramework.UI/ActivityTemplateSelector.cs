@@ -1,20 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace BotFramework.UI
 {
 	public class ActivityTemplateSelector : Xamarin.Forms.DataTemplateSelector
 	{
-		protected DataTemplate messageTemplate;
+		public static Dictionary<ActivityType, DataTemplate> TypeMappings = new Dictionary<ActivityType, DataTemplate>
+		{
+			{Message.ContentType,new DataTemplate (typeof (MessageView))},
+		};
+		protected DataTemplate defaultTemplate;
 		public ActivityTemplateSelector ()
 		{
 			// Retain instances!
-			this.messageTemplate = new DataTemplate (typeof (MessageView));
+			this.defaultTemplate = new DataTemplate (typeof (MessageView));
 		}
 
 		protected override DataTemplate OnSelectTemplate (object item, BindableObject container)
 		{
-			return messageTemplate;
+			var activity = item as BotActivity;
+			if (activity == null)
+				return null;
+			DataTemplate template = defaultTemplate;
+			TypeMappings.TryGetValue (activity.Type, out template);
+			return template;
 		}
 	}
 }
