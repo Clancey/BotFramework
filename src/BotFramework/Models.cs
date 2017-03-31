@@ -11,11 +11,16 @@ namespace BotFramework
 		public string Id { get; set; }
 	}
 
+	[Newtonsoft.Json.JsonConverter (typeof (Newtonsoft.Json.Converters.StringEnumConverter))]
 	public enum ActivityType
 	{
+		[System.Runtime.Serialization.EnumMember (Value = "message")]
 		Message,
+		[System.Runtime.Serialization.EnumMember (Value = "contactRelationUpdate")]
 		ContactRelationUpdate,
+		[System.Runtime.Serialization.EnumMember (Value = "converationUpdate")]
 		ConverationUpdate,
+		[System.Runtime.Serialization.EnumMember (Value = "typing")]
 		Typing
 	}
 
@@ -41,26 +46,26 @@ namespace BotFramework
 		/// <summary>
 		/// Gets or sets UTC Time when message was sent (Set by service)
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "timestamp")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "timestamp", NullValueHandling = NullValueHandling.Ignore)]
 		public System.DateTime? Timestamp { get; set; }
 
 		/// <summary>
 		/// Gets or sets local time when message was sent (set by client Ex:
 		/// 2016-09-23T13:07:49.4714686-07:00)
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "localTimestamp")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "localTimestamp", NullValueHandling = NullValueHandling.Ignore)]
 		public System.DateTime? LocalTimestamp { get; set; }
 
 		/// <summary>
 		/// Gets or sets service endpoint
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "serviceUrl")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "serviceUrl", NullValueHandling = NullValueHandling.Ignore)]
 		public string ServiceUrl { get; set; }
 
 		/// <summary>
 		/// Gets or sets channelId the activity was on
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "channelId")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "channelId", NullValueHandling = NullValueHandling.Ignore)]
 		public string ChannelId { get; set; }
 
 		/// <summary>
@@ -79,94 +84,94 @@ namespace BotFramework
 		/// Gets or sets (Outbound to bot only) Bot's address that received the
 		/// message
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "recipient")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "recipient", NullValueHandling = NullValueHandling.Ignore)]
 		public ChannelAccount Recipient { get; set; }
 
 		/// <summary>
 		/// Gets or sets format of text fields [plain|markdown]
 		/// Default:markdown
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "textFormat")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "textFormat", NullValueHandling = NullValueHandling.Ignore)]
 		public string TextFormat { get; set; }
 
 		/// <summary>
 		/// Gets or sets attachmentLayout - hint for how to deal with multiple
 		/// attachments Values: [list|carousel] Default:list
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "attachmentLayout")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "attachmentLayout", NullValueHandling = NullValueHandling.Ignore)]
 		public string AttachmentLayout { get; set; }
 
 		/// <summary>
 		/// Gets or sets array of address added
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "membersAdded")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "membersAdded", NullValueHandling = NullValueHandling.Ignore)]
 		public ChannelAccount [] MembersAdded { get; set; }
 
 		/// <summary>
 		/// Gets or sets array of addresses removed
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "membersRemoved")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "membersRemoved", NullValueHandling = NullValueHandling.Ignore)]
 		public ChannelAccount [] MembersRemoved { get; set; }
 
 		/// <summary>
 		/// Gets or sets conversations new topic name
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "topicName")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "topicName", NullValueHandling = NullValueHandling.Ignore)]
 		public string TopicName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the previous history of the channel was disclosed
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "historyDisclosed")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "historyDisclosed", NullValueHandling = NullValueHandling.Ignore)]
 		public bool? HistoryDisclosed { get; set; }
 
 		/// <summary>
 		/// Gets or sets the language code of the Text field
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "locale")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "locale", NullValueHandling = NullValueHandling.Ignore)]
 		public string Locale { get; set; }
 
 		/// <summary>
 		/// Gets or sets content for the message
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "text")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "text", NullValueHandling = NullValueHandling.Ignore)]
 		public string Text { get; set; }
 
 		/// <summary>
 		/// Gets or sets text to display if you can't render cards
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "summary")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "summary", NullValueHandling = NullValueHandling.Ignore)]
 		public string Summary { get; set; }
 
 		/// <summary>
 		/// Gets or sets attachments
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "attachments")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "attachments", NullValueHandling = NullValueHandling.Ignore)]
 		public Attachment [] Attachments { get; set; }
 
 		/// <summary>
 		/// Gets or sets collection of Entity objects, each of which contains
 		/// metadata about this activity. Each Entity object is typed.
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "entities")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "entities", NullValueHandling = NullValueHandling.Ignore)]
 		public Entity [] Entities { get; set; }
 
 		/// <summary>
 		/// Gets or sets channel specific payload
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "channelData")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "channelData", NullValueHandling = NullValueHandling.Ignore)]
 		public object ChannelData { get; set; }
 
 		/// <summary>
 		/// Gets or sets contactAdded/Removed action
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "action")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "action", NullValueHandling = NullValueHandling.Ignore)]
 		public string Action { get; set; }
 
 		/// <summary>
 		/// Gets or sets the original id this message is a response to
 		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "replyToId")]
+		[Newtonsoft.Json.JsonProperty (PropertyName = "replyToId", NullValueHandling = NullValueHandling.Ignore)]
 		public string ReplyToId { get; set; }
 
 		[JsonIgnore]

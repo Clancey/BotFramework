@@ -26,9 +26,9 @@ namespace BotFramework.UI
 			var messageVm = item as Attachment;
 			if (messageVm == null)
 				return null;
-			DataTemplate template = defaultTemplate;
-			TypeMappings.TryGetValue (messageVm.ContentType, out template);
-			return template;
+			DataTemplate template = null;
+			TypeMappings.TryGetValue (messageVm.ContentType ?? "", out template);
+			return template ?? defaultTemplate;
 		}
 
 	}

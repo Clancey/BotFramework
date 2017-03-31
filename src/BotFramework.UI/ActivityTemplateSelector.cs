@@ -22,9 +22,9 @@ namespace BotFramework.UI
 			var activity = item as BotActivity;
 			if (activity == null)
 				return null;
-			DataTemplate template = defaultTemplate;
+			DataTemplate template = null;
 			TypeMappings.TryGetValue (activity.Type, out template);
-			return template;
+			return template ?? defaultTemplate;
 		}
 	}
 }
