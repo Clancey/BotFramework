@@ -8,11 +8,17 @@ namespace BotFramework.UI
 	{
 		public ActivityViewCell ()
 		{
-			View = new ActivityView ();
+			View = new ActivityView { ParentCell = this };
 		}
 	}
 	public class ActivityView : ContentView
 	{
+		WeakReference parentCell;
+		public ActivityViewCell ParentCell {
+			get { return parentCell?.Target as ActivityViewCell; }
+			set { parentCell = new WeakReference (value); }
+		}
+
 		public static readonly BindableProperty ActivityTemplateProperty = BindableProperty.Create (nameof (ActivityTemplate), typeof (DataTemplate), typeof (ActivityView), new ActivityTemplateSelector());
 
 		public DataTemplate ActivityTemplate {
@@ -98,6 +104,12 @@ namespace BotFramework.UI
 		{
 			if(Frame.Content != null)
 				Frame.Content = null;
+		}
+
+		protected override void OnChildMeasureInvalidated ()
+		{
+			base.OnChildMeasureInvalidated ();
+			ParentCell?.ForceUpdateSize ();
 		}
 
 	}
