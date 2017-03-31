@@ -9,7 +9,7 @@ namespace BotFramework.UI
 		protected DataTemplate defaultTemplate;
 		public CardTemplateSelector ()
 		{
-			defaultTemplate = new DataTemplate (typeof (Label));
+			defaultTemplate = new DataTemplate (typeof (HeroCardView));
 		}
 		public static Dictionary<string, DataTemplate> TypeMappings = new Dictionary<string, DataTemplate>
 		{

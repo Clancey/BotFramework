@@ -14,13 +14,9 @@ namespace BotFramework
 	[Newtonsoft.Json.JsonConverter (typeof (Newtonsoft.Json.Converters.StringEnumConverter))]
 	public enum ActivityType
 	{
-		[System.Runtime.Serialization.EnumMember (Value = "message")]
 		Message,
-		[System.Runtime.Serialization.EnumMember (Value = "contactRelationUpdate")]
 		ContactRelationUpdate,
-		[System.Runtime.Serialization.EnumMember (Value = "converationUpdate")]
 		ConverationUpdate,
-		[System.Runtime.Serialization.EnumMember (Value = "typing")]
 		Typing
 	}
 
