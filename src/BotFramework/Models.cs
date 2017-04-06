@@ -267,7 +267,8 @@ namespace BotFramework
 		PlayAudio,
 		PlayVideo,
 		PostBack,
-		SignIn
+		SignIn,
+		AdaptiveAction
 	}
 
 	public class CardAction

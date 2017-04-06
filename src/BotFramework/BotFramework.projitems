@@ -22,5 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\JsonEntityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\JsonCardConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cards.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AdaptiveCardConverter.cs" />
   </ItemGroup>
 </Project>

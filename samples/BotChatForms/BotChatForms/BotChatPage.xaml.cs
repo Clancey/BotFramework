@@ -46,7 +46,9 @@ namespace BotChatForms
 
 		async Task StartConversation ()
 		{
-			currentConversation = await ConversationManager.StartConversation (name, "WfnLyhBjpIE.cwA.VWI.hlOZgHQO2ceQFi0bBPV7cmA55PKBam-rd1arfgSj5nE");
+			var baseUri = new Uri ("https://directline.scratch.botframework.com");
+			var secret = "b9RlKakMKPk.cwA.HLc.m6lzEenENtMMk2TD_Lh4iGzK3VlP6x_NsRaA-KLhHkk";
+			currentConversation = await ConversationManager.StartConversation (name, secret,baseUri: baseUri);
 			currentConversation.CardActionTapped = HandleCardActionTapped;
 			MessageList.ItemsSource = currentConversation.Conversation.Messages;
 			StartStopButton.Text = "End Conversation";

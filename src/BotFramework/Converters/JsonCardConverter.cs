@@ -17,6 +17,7 @@ namespace BotFramework
 			{AnimationCard.ContentType,typeof(AnimationCard)},
 			{AudioCard.ContentType,typeof(AudioCard)},
 			{VideoCard.ContentType,typeof(VideoCard)},
+			{AdaptiveCardWrapper.ContentType,typeof(AdaptiveCardWrapper)},
 		};
 		protected override Card Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{

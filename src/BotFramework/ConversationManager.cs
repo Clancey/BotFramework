@@ -23,9 +23,11 @@ namespace BotFramework
 
 		public BotFrameworkApi Api { get; private set; }
 
-		public static async Task<ConversationManager> StartConversation (string name, string clientSecret, bool automaticallyGetMessageUpdates = true)
+		public static async Task<ConversationManager> StartConversation (string name, string clientSecret, bool automaticallyGetMessageUpdates = true, Uri baseUri = null)
 		{
 			var api = new BotFrameworkApi (clientSecret);
+			if (baseUri != null)
+				api.BaseAddress = baseUri;
 			var conversation = await api.StartConversation (name);
 			var manager = new ConversationManager () {
 				Conversation = conversation,

@@ -52,6 +52,12 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.3.8-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Media.dll</HintPath>
     </Reference>
+    <Reference Include="AdaptiveCards">
+      <HintPath>..\AdaptiveCards.dll</HintPath>
+    </Reference>
+    <Reference Include="AdaptiveCards.Xaml.XamarinForms">
+      <HintPath>..\AdaptiveCards.Xaml.XamarinForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

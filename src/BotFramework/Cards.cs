@@ -260,4 +260,20 @@ namespace BotFramework
 		public CardAction Tap { get; set; }
 	}
 
+
+	[Newtonsoft.Json.JsonConverter (typeof (AdaptiveCardConverter))]
+	public class AdaptiveCardWrapper : Card
+	{
+		public const string ContentType = "application/vnd.microsoft.card.adaptive";
+
+		AdaptiveCards.AdaptiveCard card;
+		public AdaptiveCards.AdaptiveCard Card {
+			get { return card; }
+			set {
+				card = value;
+				this.Title = card?.Title;
+				this.Subtitle = card?.FallbackText;
+			}
+		}
+	}
 }

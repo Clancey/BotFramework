@@ -48,6 +48,9 @@
     <Reference Include="SimpleAuth">
       <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
     </Reference>
+    <Reference Include="AdaptiveCards">
+      <HintPath>..\AdaptiveCards.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
