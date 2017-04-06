@@ -56,6 +56,11 @@ namespace BotFramework
 				await PrepareClient (Client);
 			}
 		}
+		protected override Task InvalidateCredentials ()
+		{
+			CurrentConversation.ExpiresIn = 1;
+			return Task.FromResult (true);
+		}
 
 		public override async Task<HttpResponseMessage> SendMessage (HttpRequestMessage message, bool authenticated = true, HttpCompletionOption completionOption = 0)
 		{
