@@ -46,9 +46,9 @@ namespace BotChatForms
 
 		async Task StartConversation ()
 		{
-			var baseUri = new Uri ("https://directline.scratch.botframework.com");
+			var baseUri = new Uri ("https://directline.scratch.botframework.com/v3/directline/");
 			var secret = "b9RlKakMKPk.cwA.HLc.m6lzEenENtMMk2TD_Lh4iGzK3VlP6x_NsRaA-KLhHkk";
-			currentConversation = await ConversationManager.StartConversation (name, secret,baseUri: baseUri);
+            currentConversation = await ConversationManager.StartConversation(name, secret,baseUri: baseUri);
 			currentConversation.CardActionTapped = HandleCardActionTapped;
 			MessageList.ItemsSource = currentConversation.Conversation.Messages;
 			StartStopButton.Text = "End Conversation";
@@ -80,13 +80,21 @@ namespace BotChatForms
 
 		async void SendMessage (object sender, System.EventArgs e)
 		{
-			if (currentConversation == null) {
-				await StartConversation ();
-			}
-			if (string.IsNullOrWhiteSpace (Text.Text))
-				return;
-			await currentConversation.SendMessage (new Message {Text = Text.Text });
-			Text.Text = "";
+            try
+            {
+                if (currentConversation == null)
+                {
+                    await StartConversation();
+                }
+                if (string.IsNullOrWhiteSpace(Text.Text))
+                    return;
+                await currentConversation.SendMessage(new Message { Text = Text.Text });
+                Text.Text = "";
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 		}
 
 		async void AddPhoto (object sender, System.EventArgs e)

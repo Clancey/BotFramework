@@ -42,6 +42,8 @@ Global
 		src\BotFramework.UI\BotFramework.UI.projitems*{99346658-77a9-4bb6-b4c1-dd68be1d01af}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{bfdd7ccb-cee4-42de-b9fd-3d30c5af1c57}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{ce8acc9e-f539-4535-85e8-690ca46cb26a}*SharedItemsImports = 4
+		samples\BotChatForms\BotChatForms\BotChatForms.projitems*{d8b41cb4-5cc8-41ea-9b2a-1eaccbb33b56}*SharedItemsImports = 4
+		src\BotFramework.UI\BotFramework.UI.projitems*{d8b41cb4-5cc8-41ea-9b2a-1eaccbb33b56}*SharedItemsImports = 4
 		src\BotFramework\BotFramework.projitems*{fd943c15-8bfc-48b4-bea2-9b866d22b10d}*SharedItemsImports = 4
 		src\BotFramework.UI\BotFramework.UI.projitems*{ff044c57-09d9-479d-9564-a9765f2bae7f}*SharedItemsImports = 13
 	EndGlobalSection

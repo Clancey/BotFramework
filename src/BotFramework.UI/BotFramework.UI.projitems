@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CardTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ActivityView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\BindingsExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\AdaptiveCardView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\CardView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\HeroCardView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Cards\ReceiptCardView.cs" />
@@ -28,8 +29,5 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ChatButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
 </Project>

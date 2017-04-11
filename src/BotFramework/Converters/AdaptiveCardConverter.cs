@@ -3,12 +3,12 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 namespace BotFramework
 {
-	public class AdaptiveCardConverter : JsonCreationConverter<AdaptiveCards.AdaptiveCard>
+	public class AdaptiveCardConverter : JsonCreationConverter<AdaptiveCardWrapper>
 	{
 
-		protected override AdaptiveCards.AdaptiveCard Create (System.Type objectType, JObject jsonObject, JsonReader reader)
+		protected override AdaptiveCardWrapper Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{
-			return new AdaptiveCards.AdaptiveCard ();
+			return new AdaptiveCardWrapper();
 		}
 
 		public override object ReadJson (JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

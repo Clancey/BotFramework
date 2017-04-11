@@ -17,7 +17,7 @@ namespace BotFramework
 			{AnimationCard.ContentType,typeof(AnimationCard)},
 			{AudioCard.ContentType,typeof(AudioCard)},
 			{VideoCard.ContentType,typeof(VideoCard)},
-			{AdaptiveCardWrapper.ContentType,typeof(AdaptiveCardWrapper)},
+			{AdaptiveCardWrapper.ContentType,typeof(AdaptiveCards.AdaptiveCard)},
 		};
 		protected override Card Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{
@@ -30,6 +30,11 @@ namespace BotFramework
 					type = token.ToString ();
 					Type cardType = typeof(Card);
 					TypeMappings.TryGetValue(type, out cardType);
+                    //Edge case since the type lives outside the lib and has a wrapper
+                    if(type == AdaptiveCardWrapper.ContentType)
+                    {
+                        return new AdaptiveCardWrapper { Card = (AdaptiveCards.AdaptiveCard)Activator.CreateInstance(cardType) };
+                    }
 					return (Card)Activator.CreateInstance(cardType);
 				}
 				return new Card ();
