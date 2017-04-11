@@ -148,6 +148,12 @@
     <Reference Include="SimpleAuth">
       <HintPath>..\..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Xamarin.iOS10\SimpleAuth.dll</HintPath>
     </Reference>
+    <Reference Include="AsNum.XFControls">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.dll</HintPath>
+    </Reference>
+    <Reference Include="AsNum.XFControls.iOS">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\BotFramework.iOS\BotFramework.iOS.csproj">
