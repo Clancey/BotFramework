@@ -51,6 +51,12 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AsNum.XFControls, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\MonoAndroid\AsNum.XFControls.dll</HintPath>
+    </Reference>
+    <Reference Include="AsNum.XFControls.Droid, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\MonoAndroid\AsNum.XFControls.Droid.dll</HintPath>
+    </Reference>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Xamarin.Forms.2.3.5.232-pre1\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>

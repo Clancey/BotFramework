@@ -27,6 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards.Xaml.XamarinForms\AdaptiveCards.Xaml.XamarinForms.csproj" />
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards\AdaptiveCards.csproj" />
     <ProjectReference Include="..\BotFramework.NET\BotFramework.NET.csproj" />
   </ItemGroup>
 </Project>

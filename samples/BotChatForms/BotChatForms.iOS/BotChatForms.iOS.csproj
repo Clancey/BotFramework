@@ -119,6 +119,12 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AsNum.XFControls, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.dll</HintPath>
+    </Reference>
+    <Reference Include="AsNum.XFControls.iOS, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -152,6 +158,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards.Xaml.XamarinForms\AdaptiveCards.Xaml.XamarinForms.csproj">
+      <Project>{89a65883-7b62-4de2-a7c5-e4a5f398ff13}</Project>
+      <Name>AdaptiveCards.Xaml.XamarinForms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\BotFramework.NET\BotFramework.NET.csproj">
       <Project>{03d49f11-b7c4-4ea1-92ca-65c2f7305add}</Project>
       <Name>BotFramework.NET</Name>
