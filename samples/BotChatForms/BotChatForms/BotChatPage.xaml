@@ -17,7 +17,7 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<Button Text="+" Grid.Column="0" Clicked="AddPhoto" />
-			<Entry x:Name="Text" Grid.Column="1" />
+			<Entry x:Name="Text" Grid.Column="1" Completed="SendMessage" />
 			<Button Text="Send" Clicked="SendMessage" Grid.Column="2" />
 		</Grid>
 	</StackLayout>
