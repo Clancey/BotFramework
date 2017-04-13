@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
@@ -43,9 +44,6 @@
     <Reference Include="SimpleAuth">
       <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Xamarin.iOS10\SimpleAuth.dll</HintPath>
     </Reference>
-    <Reference Include="AdaptiveCards">
-      <HintPath>..\AdaptiveCards.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -54,7 +52,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards.Xaml.XamarinForms\AdaptiveCards.Xaml.XamarinForms.csproj">
+      <Project>{9114c10e-4b74-4c9b-b6b5-1d55c4c51746}</Project>
+      <Name>AdaptiveCards.Xaml.XamarinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards\AdaptiveCards.csproj">
+      <Project>{f4173ed9-3eb0-4426-82b7-241ebea7590e}</Project>
+      <Name>AdaptiveCards</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\BotFramework\BotFramework.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

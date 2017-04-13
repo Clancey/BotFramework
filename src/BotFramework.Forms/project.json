@@ -1,0 +1,16 @@
+﻿{
+  "supports": {},
+  "dependencies": {
+    "Clancey.SimpleAuth": "1.0.35",
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "10.0.2",
+    "Xam.Plugin.Media": "2.6.2",
+    "Xamarin.Forms": "2.3.4.224"
+  },
+  "frameworks": {
+    "netstandard1.4": {
+      "imports": "portable-net45+win8+wpa81+wp8"
+    }
+  }
+}

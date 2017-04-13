@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace BotFramework
 {
-	public class JsonCardConverter : JsonCreationConverter<Card>
+	public class JsonCardConverter : JsonCreationConverter<object>
 	{
 		public static Dictionary<string, Type> TypeMappings = new Dictionary<string, Type>
 		{
@@ -19,7 +19,7 @@ namespace BotFramework
 			{VideoCard.ContentType,typeof(VideoCard)},
 			{AdaptiveCardWrapper.ContentType,typeof(AdaptiveCards.AdaptiveCard)},
 		};
-		protected override Card Create (System.Type objectType, JObject jsonObject, JsonReader reader)
+		protected override object Create (System.Type objectType, JObject jsonObject, JsonReader reader)
 		{
 			string type = "";
 			try {
@@ -30,12 +30,7 @@ namespace BotFramework
 					type = token.ToString ();
 					Type cardType = typeof(Card);
 					TypeMappings.TryGetValue(type, out cardType);
-                    //Edge case since the type lives outside the lib and has a wrapper
-                    if(type == AdaptiveCardWrapper.ContentType)
-                    {
-                        return new AdaptiveCardWrapper { Card = (AdaptiveCards.AdaptiveCard)Activator.CreateInstance(cardType) };
-                    }
-					return (Card)Activator.CreateInstance(cardType);
+					return Activator.CreateInstance(cardType);
 				}
 				return new Card ();
 			} catch (Exception ex) {
@@ -48,12 +43,20 @@ namespace BotFramework
 			try {
 				// This is ugly, but a few cards dont use json like Alerts...
 				if (reader.TokenType == JsonToken.String) {
-					var card = Create (objectType, null, reader);
+					var card = Create (objectType, null, reader) as Card;
 					card.Text = (string)new JValue (reader.Value);
 					return card;
 				}
-				//Set the card actions parents
-				return SetCardActionsParent (base.ReadJson (reader, objectType, existingValue, serializer) as Card);
+                //Set the card actions parents
+                var obj = base.ReadJson(reader, objectType, existingValue, serializer);
+                //Edge case since it needs a wrapper;
+                var adaptive = obj as AdaptiveCards.AdaptiveCard;
+                if(adaptive != null)
+                {
+                    obj = new AdaptiveCardWrapper { Card = adaptive };
+                }
+
+                return SetCardActionsParent (obj as Card);
 			} catch (Exception ex) {
 				Console.WriteLine (ex);
 			}

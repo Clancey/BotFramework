@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,8 +9,12 @@
     <OutputType>Library</OutputType>
     <RootNamespace>BotFramework.Forms</RootNamespace>
     <AssemblyName>BotFramework.Forms</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,38 +35,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleAuth">
-      <HintPath>..\..\packages\Clancey.SimpleAuth.1.0.35\lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Media.Abstractions">
-      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.3.8-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Media.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Media">
-      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.3.8-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="AdaptiveCards">
-      <HintPath>..\AdaptiveCards.dll</HintPath>
-    </Reference>
-    <Reference Include="AdaptiveCards.Xaml.XamarinForms">
-      <HintPath>..\AdaptiveCards.Xaml.XamarinForms.dll</HintPath>
-    </Reference>
+    <None Include="app.config" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards.Xaml.XamarinForms\AdaptiveCards.Xaml.XamarinForms.csproj">
+      <Project>{9114c10e-4b74-4c9b-b6b5-1d55c4c51746}</Project>
+      <Name>AdaptiveCards.Xaml.XamarinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards\AdaptiveCards.csproj">
+      <Project>{f4173ed9-3eb0-4426-82b7-241ebea7590e}</Project>
+      <Name>AdaptiveCards</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BotFramework.PCL\BotFramework.PCL.csproj">
       <Project>{BFDD7CCB-CEE4-42DE-B9FD-3D30C5AF1C57}</Project>
       <Name>BotFramework.PCL</Name>
@@ -71,5 +55,4 @@
   <Import Project="..\BotFramework.UI\BotFramework.UI.projitems" Label="Shared" Condition="Exists('..\BotFramework.UI\BotFramework.UI.projitems')" />
   <Import Project="..\..\samples\BotChatForms\BotChatForms\BotChatForms.projitems" Label="Shared" Condition="Exists('..\..\samples\BotChatForms\BotChatForms\BotChatForms.projitems')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>
