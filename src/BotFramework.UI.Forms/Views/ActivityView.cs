@@ -4,14 +4,15 @@ using Xamarin.Forms;
 
 namespace BotFramework.UI
 {
-	public class ActivityViewCell : ViewCell
+    public class ActivityViewCell : ViewCell
 	{
 		public ActivityViewCell ()
 		{
 			View = new ActivityView { ParentCell = this };
 		}
 	}
-	public class ActivityView : ContentView
+    
+    public class ActivityView : ContentView
 	{
 		WeakReference parentCell;
 		public ActivityViewCell ParentCell {

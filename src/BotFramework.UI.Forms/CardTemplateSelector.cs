@@ -17,6 +17,7 @@ namespace BotFramework.UI
 			{ReceiptCard.ContentType,new DataTemplate (typeof (ReceiptCardView))},
 			{SigninCard.ContentType,new DataTemplate (typeof (SignInCardView))},
 			{ThumbnailCard.ContentType,new DataTemplate (typeof (ThumbnailCardView))},
+            {AdaptiveCard.ContentType,new DataTemplate (typeof (AdaptiveCardView))},
 			//{AnimationCard.ContentType,typeof(AnimationCard)},
 			//{AudioCard.ContentType,typeof(AudioCard)},
 			//{VideoCard.ContentType,typeof(VideoCard)},

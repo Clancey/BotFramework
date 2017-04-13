@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns:m="clr-namespace:BotChat" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BotFramework.UI" x:Class="BotChatForms.BotChatPage">
+<ContentPage xmlns:m="clr-namespace:BotChat" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BotFramework.UI;assembly=BotFramework.UI.Forms" x:Class="BotChatForms.BotChatPage">
 	<StackLayout>
 		<Button x:Name="StartStopButton" Text="Start Conversation" Clicked="StartStopConversation" />
 		<ListView x:Name="MessageList" SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
@@ -16,7 +17,7 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<Button Text="+" Grid.Column="0" Clicked="AddPhoto" />
-			<Entry x:Name="Text" Grid.Column="1" />
+			<Entry x:Name="Text" Grid.Column="1" Completed="SendMessage" />
 			<Button Text="Send" Clicked="SendMessage" Grid.Column="2" />
 		</Grid>
 	</StackLayout>
