@@ -33,7 +33,7 @@ namespace BotFramework.UI
 			get { return (double)GetValue (SmallPaddingProperty); }
 			set { SetValue (SmallPaddingProperty, value); }
 		}
-		public static readonly BindableProperty LargePaddingProperty = BindableProperty.Create (nameof (LargePadding), typeof (double), typeof (ActivityView), 40.0);
+		public static readonly BindableProperty LargePaddingProperty = BindableProperty.Create (nameof (LargePadding), typeof (double), typeof (ActivityView), 20.0);
 
 		public double LargePadding {
 			get { return (double)GetValue (LargePaddingProperty); }
@@ -41,8 +41,8 @@ namespace BotFramework.UI
 		}
 
 		public readonly Frame Frame;
-		public Color IncomingColor = Color.FromHex("#03A9F4");
-		public Color OutgoingColor = Color.FromHex ("#F5F5F5");
+        public Color OutgoingColor = Color.FromHex("#03A9F4");
+        public Color IncomingColor = Color.FromHex("#FFFFFF");
 
 		Grid mainGrid;
 		ColumnDefinition leftPaddingColumn;
@@ -51,14 +51,12 @@ namespace BotFramework.UI
 		{
 			this.ActivityTemplate = new ActivityTemplateSelector ();
 			this.Content = mainGrid = new Grid {
-				ColumnSpacing = 2,
-				Padding = new Thickness(5),
 				ColumnDefinitions = new ColumnDefinitionCollection {
 					(leftPaddingColumn = new ColumnDefinition{
 						Width = new GridLength(10),
 					}),
 					new ColumnDefinition {Width =  GridLength.Star},
-					(rightPaddingColumn =new ColumnDefinition {Width = new GridLength(40)}),
+					(rightPaddingColumn =new ColumnDefinition {Width = new GridLength(20)}),
 				},
 				RowDefinitions = new RowDefinitionCollection {
 					new RowDefinition{ Height = GridLength.Auto},

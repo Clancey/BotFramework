@@ -19,6 +19,7 @@ namespace BotChatForms
 			MessageList.ItemSelected += (sender, e) => {
 				((ListView)sender).SelectedItem = null;
 			};
+            StartConversation();
 		}
 		ConversationManager currentConversation;
 		async void StartStopConversation (object sender, System.EventArgs e)

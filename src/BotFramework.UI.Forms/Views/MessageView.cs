@@ -36,7 +36,7 @@ namespace BotFramework.UI
 			var message = BindingContext as Message;
 			if (message == null)
 				return;
-			Text.TextColor = IsFromMe ? Color.Black : Color.White;
+			Text.TextColor = IsFromMe ? Color.White : Color.Black;
 			if (message.Attachments != null)
 				foreach (var a in message.Attachments) {
 					Children.Add (CreateView (a));
