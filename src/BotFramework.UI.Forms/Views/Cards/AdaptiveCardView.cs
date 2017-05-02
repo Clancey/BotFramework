@@ -1,4 +1,5 @@
 ﻿using AdaptiveCards.Rendering;
+using AdaptiveCards.Rendering.Config;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +10,12 @@ namespace BotFramework.UI
     public class AdaptiveCardView : CardView
     {
 
-        static HostOptions hostOptions;
-        public static HostOptions HostOptions
+        static HostConfig hostOptions;
+        public static HostConfig HostOptions
         {
             get
             {
-                return hostOptions ?? (hostOptions = new HostOptions
+                return hostOptions ?? (hostOptions = new HostConfig
                 {
                     ImageSizes =
                     {
@@ -22,30 +23,30 @@ namespace BotFramework.UI
                         Medium = 60,
                         Large = 90,
                     },
-                    Column =
-                    {
-                        Separation = {
-                            Default =
-                            {
-                                Spacing = 5,
-                            },
-                            Strong =
-                            {
-                                Spacing = 10,
-                            }
-                        }
-                    },
-                    Separation =
-                    {
-                        Default =
-                        {
-                            Spacing = 5
-                        }
-                    },
-                    AdaptiveCard =
-                    {
-                         Padding = new BoundaryOptions(2),
-                    },
+                    //Column =
+                    //{
+                    //    Separation = {
+                    //        Default =
+                    //        {
+                    //            Spacing = 5,
+                    //        },
+                    //        Strong =
+                    //        {
+                    //            Spacing = 10,
+                    //        }
+                    //    }
+                    //},
+                    //Separation =
+                    //{
+                    //    Default =
+                    //    {
+                    //        Spacing = 5
+                    //    }
+                    //},
+                    //AdaptiveCard =
+                    //{
+                    //     Padding = new BoundaryOptions(2),
+                    //},
                     
                 });
             }
