@@ -145,7 +145,13 @@ namespace BotFramework
 				return;
 			message.IsFromMe = message.FromId == Conversation.MyName;
 			//Set the callback for the actions!
-			(message as Message)?.Attachments?.ToList ()?.ForEach (x => x?.Content?.Buttons?.ToList ().ForEach (y => y.ActionHandler = this));
+			(message as Message)?.Attachments?.ToList ()?.ForEach (x =>
+            {
+                x?.Content?.Buttons?.ToList().ForEach(y => y.ActionHandler = this);
+                var adaptive = x?.Content as AdaptiveCard;
+                if (adaptive != null)
+                    adaptive.Parent = this;
+            });
 			Conversation.Messages.Add (message);
 		}
 		public Action<CardAction> CardActionTapped { get; set; }

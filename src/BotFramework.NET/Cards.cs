@@ -265,7 +265,13 @@ namespace BotFramework
 
     public class AdaptiveCard : Card
     {
-
+        WeakReference parent;
+        [JsonIgnore]
+        public ConversationManager Parent
+        {
+            get { return parent?.Target as ConversationManager; }
+            set { parent = new WeakReference(value); }
+        }
         public const string ContentType = "application/vnd.microsoft.card.adaptive";
         public AdaptiveCards.AdaptiveCard Card { get; set; } = new AdaptiveCards.AdaptiveCard();
         public AdaptiveCard()
