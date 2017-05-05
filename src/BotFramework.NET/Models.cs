@@ -133,10 +133,16 @@ namespace BotFramework
 		[Newtonsoft.Json.JsonProperty (PropertyName = "text", NullValueHandling = NullValueHandling.Ignore)]
 		public string Text { get; set; }
 
-		/// <summary>
-		/// Gets or sets text to display if you can't render cards
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty (PropertyName = "summary", NullValueHandling = NullValueHandling.Ignore)]
+        /// <summary>
+        /// Gets or sets content for the value, for post backs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "value", NullValueHandling = NullValueHandling.Ignore)]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets text to display if you can't render cards
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty (PropertyName = "summary", NullValueHandling = NullValueHandling.Ignore)]
 		public string Summary { get; set; }
 
 		/// <summary>
