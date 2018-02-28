@@ -60,7 +60,8 @@ namespace BotFramework
 		}
 		protected override Task InvalidateCredentials ()
 		{
-			CurrentConversation.ExpiresIn = 1;
+			if(CurrentConversation != null)
+				CurrentConversation.ExpiresIn = 1;
 			return Task.FromResult (true);
 		}
 
