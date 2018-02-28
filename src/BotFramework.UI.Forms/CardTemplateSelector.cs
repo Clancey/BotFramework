@@ -25,13 +25,13 @@ namespace BotFramework.UI
 			//{AudioCard.ContentType,typeof(AudioCard)},
 			//{VideoCard.ContentType,typeof(VideoCard)},
 		};
-		protected override DataTemplate OnSelectTemplate (object item, BindableObject container)
+		protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
 		{
 			var messageVm = item as Attachment;
 			if (messageVm == null)
 				return null;
 			DataTemplate template = null;
-			TypeMappings.TryGetValue (messageVm.ContentType ?? "", out template);
+			TypeMappings.TryGetValue(messageVm.ContentType ?? "", out template);
 			return template ?? defaultTemplate;
 		}
 

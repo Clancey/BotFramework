@@ -262,7 +262,7 @@ namespace BotFramework
 		[Newtonsoft.Json.JsonProperty(PropertyName = "tap")]
 		public CardAction Tap { get; set; }
 	}
-	#if AdaptiveCard
+#if AdaptiveCard
 	public class AdaptiveCard : Card
     {
 
