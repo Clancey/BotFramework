@@ -47,7 +47,9 @@ namespace BotFramework
 		{
 			if (!CurrentConversation?.IsTokenValid ?? false) {
 				var resp = await this.RenewConversationToken ();
-				if (resp == null)
+				if (resp == null){
+					resp = await this.GetToken ();
+				}
 					return;
 				CurrentConversation.Token = resp.Token;
 				CurrentConversation.ExpiresIn = resp.ExpiresIn;
@@ -251,7 +253,7 @@ namespace BotFramework
 			key = Secret;
 			await PrepareClient (Client);
 
-			var resp = await Post<Conversation> (body: null);
+			var resp = await Post<Conversation> (body: null, authenticated: false);
 			return resp;
 
 		}

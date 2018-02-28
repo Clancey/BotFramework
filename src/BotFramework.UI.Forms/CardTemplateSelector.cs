@@ -7,9 +7,9 @@ namespace BotFramework.UI
 	public class CardTemplateSelector : Xamarin.Forms.DataTemplateSelector
 	{
 		protected DataTemplate defaultTemplate;
-		public CardTemplateSelector ()
+		public CardTemplateSelector()
 		{
-			defaultTemplate = new DataTemplate (typeof (HeroCardView));
+			defaultTemplate = new DataTemplate(typeof(HeroCardView));
 		}
 		public static Dictionary<string, DataTemplate> TypeMappings = new Dictionary<string, DataTemplate>
 		{
@@ -17,7 +17,10 @@ namespace BotFramework.UI
 			{ReceiptCard.ContentType,new DataTemplate (typeof (ReceiptCardView))},
 			{SigninCard.ContentType,new DataTemplate (typeof (SignInCardView))},
 			{ThumbnailCard.ContentType,new DataTemplate (typeof (ThumbnailCardView))},
+
+	#if AdaptiveCard
             {AdaptiveCard.ContentType,new DataTemplate (typeof (AdaptiveCardView))},
+	#endif
 			//{AnimationCard.ContentType,typeof(AnimationCard)},
 			//{AudioCard.ContentType,typeof(AudioCard)},
 			//{VideoCard.ContentType,typeof(VideoCard)},

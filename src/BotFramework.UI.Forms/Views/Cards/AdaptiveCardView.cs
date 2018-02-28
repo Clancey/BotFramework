@@ -1,4 +1,5 @@
-﻿using AdaptiveCards.Rendering;
+﻿#if AdaptiveCard
+using AdaptiveCards.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BotFramework.UI
 {
     public class AdaptiveCardView : CardView
     {
-        static XamlRenderer renderer;
+        static AdaptiveCardRenderer renderer;
         public static XamlRenderer Renderer
         {
             get { return renderer ?? (renderer = new XamlRenderer(new AdaptiveCards.Rendering.RenderOptions(), new ResourceDictionary(), null, null)); }
@@ -24,3 +25,4 @@ namespace BotFramework.UI
         }
     }
 }
+#endif

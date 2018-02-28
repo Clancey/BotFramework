@@ -158,10 +158,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\AdaptiveCards\source\dotnet\Library\AdaptiveCards.Xaml.XamarinForms\AdaptiveCards.Xaml.XamarinForms.csproj">
-      <Project>{89a65883-7b62-4de2-a7c5-e4a5f398ff13}</Project>
-      <Name>AdaptiveCards.Xaml.XamarinForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\src\BotFramework.NET\BotFramework.NET.csproj">
       <Project>{03d49f11-b7c4-4ea1-92ca-65c2f7305add}</Project>
       <Name>BotFramework.NET</Name>
