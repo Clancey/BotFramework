@@ -12,14 +12,19 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;AdaptiveCard</DefineConstants>
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD2_0;AdaptiveCard</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AdaptiveCards" Version="1.0.0-beta11" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="Clancey.SimpleAuth" Version="1.0.49" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="AdaptiveCards" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

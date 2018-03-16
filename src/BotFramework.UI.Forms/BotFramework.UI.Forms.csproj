@@ -9,11 +9,11 @@
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AdaptiveCards" Version="1.0.0-beta11" />
     <PackageReference Include="Clancey.SimpleAuth" Version="1.0.49" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <PackageReference Include="AdaptiveCards" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -34,7 +34,14 @@ namespace BotFramework
 					type = token.ToString();
 					Type cardType = typeof(Card);
 					TypeMappings.TryGetValue(type, out cardType);
-					return (Card)Activator.CreateInstance(cardType);
+					var card = (Card)Activator.CreateInstance(cardType);
+					if (card is AdaptiveCard acard)
+					{
+						
+						var theJson  = jsonObject.ToString();
+						acard.Json = theJson;
+					}
+					return card;
 				}
 				return new Card();
 			}

@@ -18,9 +18,8 @@ namespace BotFramework.UI
 			{SigninCard.ContentType,new DataTemplate (typeof (SignInCardView))},
 			{ThumbnailCard.ContentType,new DataTemplate (typeof (ThumbnailCardView))},
 
-	#if AdaptiveCard
             {AdaptiveCard.ContentType,new DataTemplate (typeof (AdaptiveCardView))},
-	#endif
+
 			//{AnimationCard.ContentType,typeof(AnimationCard)},
 			//{AudioCard.ContentType,typeof(AudioCard)},
 			//{VideoCard.ContentType,typeof(VideoCard)},

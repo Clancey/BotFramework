@@ -262,7 +262,7 @@ namespace BotFramework
 		[Newtonsoft.Json.JsonProperty(PropertyName = "tap")]
 		public CardAction Tap { get; set; }
 	}
-#if AdaptiveCard
+
 	public class AdaptiveCard : Card
     {
 
@@ -281,14 +281,14 @@ namespace BotFramework
         public string Type { get => Card.Type; set=> Card.Type = value; }
 
 
-        public IList<AdaptiveCards.AdaptiveElement> Body { get => Card.Body; set => Card.Body = value; }
+        public List<AdaptiveCards.AdaptiveElement> Body { get => Card.Body; set => Card.Body = value; }
 
 
         /// <summary>
         ///     Actions for this container
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IList<AdaptiveCards.AdaptiveAction> Actions { get => Card.Actions; set => Card.Actions = value; }
+        public List<AdaptiveCards.AdaptiveAction> Actions { get => Card.Actions; set => Card.Actions = value; }
 
 
 
@@ -324,7 +324,8 @@ namespace BotFramework
         public string FallbackText { get => Card.FallbackText; set => Card.FallbackText = value; }
 
         public static implicit operator AdaptiveCards.AdaptiveCard (AdaptiveCard card) => card.Card;
+		public string ToJson() => Card?.ToJson();
+		public string Json { get; set; }
         
     }
-#endif
 }

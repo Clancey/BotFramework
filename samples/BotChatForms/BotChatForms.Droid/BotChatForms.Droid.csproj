@@ -19,7 +19,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -151,6 +151,12 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\..\packages\Xamarin.Forms.2.5.0.280555\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="AdaptiveCards">
+      <HintPath>..\..\..\packages\AdaptiveCards.1.0.0\lib\netstandard2.0\AdaptiveCards.dll</HintPath>
+    </Reference>
+    <Reference Include="AdaptiveCards.Rendering.Xamarin.Android">
+      <HintPath>..\..\..\external\AdaptiveCards.Rendering.Xamarin.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -178,6 +184,10 @@
     <ProjectReference Include="..\..\..\src\BotFramework.UI.Forms\BotFramework.UI.Forms.csproj">
       <Project>{06e8d021-31d9-47f5-a9ff-8248c6f93324}</Project>
       <Name>BotFramework.UI.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\BotFramework.UI.Forms.Droid\BotFramework.UI.Forms.Droid.csproj">
+      <Project>{EEBB2D07-CE08-4609-B064-E5EB3354947C}</Project>
+      <Name>BotFramework.UI.Forms.Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\BotChatForms\BotChatForms.projitems" Label="Shared" Condition="Exists('..\BotChatForms\BotChatForms.projitems')" />
