@@ -46,7 +46,7 @@ namespace BotChatForms
 
 		async Task StartConversation ()
 		{
-			currentConversation = await ConversationManager.StartConversation (name, "WfnLyhBjpIE.cwA.VWI.hlOZgHQO2ceQFi0bBPV7cmA55PKBam-rd1arfgSj5nE");
+			currentConversation = await ConversationManager.StartConversation (name, "djdOSzcO3dY.cwA.vbU.S2mx6ruLXxMlGQ2FnBcoXOcr9-sAJouXeDZH8JhbA58");
 			currentConversation.CardActionTapped = HandleCardActionTapped;
 			MessageList.ItemsSource = currentConversation.Conversation.Messages;
 			StartStopButton.Text = "End Conversation";

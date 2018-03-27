@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using BotFramework.UI.Forms.iOS;
 
 namespace BotChatForms.iOS
 {
@@ -24,7 +25,7 @@ namespace BotChatForms.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new BotChatForms.App ());
-
+			AdaptiveCardViewRenderer.Init();
 			return base.FinishedLaunching (app, options);
 		}
 	}

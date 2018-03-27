@@ -127,9 +127,6 @@
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Permissions.Abstractions">
       <HintPath>..\..\..\packages\Plugin.Permissions.2.2.1\lib\Xamarin.iOS10\Plugin.Permissions.Abstractions.dll</HintPath>
     </Reference>
@@ -163,6 +160,15 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="AdaptiveCards.Rendering.Xamarin.iOS">
+      <HintPath>..\..\..\external\AdaptiveCards.Rendering.Xamarin.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="AdaptiveCards">
+      <HintPath>..\..\..\packages\AdaptiveCards.1.0.0\lib\netstandard2.0\AdaptiveCards.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\BotFramework.NET\BotFramework.NET.csproj">
@@ -172,6 +178,10 @@
     <ProjectReference Include="..\..\..\src\BotFramework.UI.Forms\BotFramework.UI.Forms.csproj">
       <Project>{06e8d021-31d9-47f5-a9ff-8248c6f93324}</Project>
       <Name>BotFramework.UI.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\BotFramework.UI.Forms.iOS\BotFramework.UI.Forms.iOS.csproj">
+      <Project>{C769623F-DB28-419A-8C6C-34E63AD6DF3B}</Project>
+      <Name>BotFramework.UI.Forms.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\BotChatForms\BotChatForms.projitems" Label="Shared" Condition="Exists('..\BotChatForms\BotChatForms.projitems')" />
