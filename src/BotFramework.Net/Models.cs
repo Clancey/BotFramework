@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace BotFramework
 {
@@ -11,13 +13,29 @@ namespace BotFramework
 		public string Id { get; set; }
 	}
 
-	[Newtonsoft.Json.JsonConverter (typeof (Newtonsoft.Json.Converters.StringEnumConverter))]
+	[JsonConverter (typeof (StringEnumConverter))]
 	public enum ActivityType
 	{
+		[EnumMember(Value = "message")]
 		Message,
+
+		[EnumMember(Value = "contactRelationUpdate")]
 		ContactRelationUpdate,
+
+		[EnumMember(Value = "converationUpdate")]
 		ConverationUpdate,
-		Typing
+
+		[EnumMember(Value = "typing")]
+		Typing,
+
+		[EnumMember(Value = "endOfConversation")]
+		EndOfConversation,
+
+		[EnumMember(Value = "event")]
+		Event,
+
+		[EnumMember(Value = "invoke")]
+		Invoke
 	}
 
 	/// <summary>

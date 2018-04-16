@@ -4,23 +4,27 @@ namespace BotFramework.UI
 {
 	public class HeroCardView : CardView
 	{
-		Label Text;
+		Label Title;
 		Label SubText;
+		Label Text;
 		public HeroCardView ()
 		{
-			Text = new Label ();
-			Text.SetBinding (Label.TextProperty, new Binding ("Content.Title"));
+			Title = new Label ();
+			Title.SetBinding (Label.TextProperty, new Binding ("Content.Title"));
 			SubText = new Label ();
 			SubText.SetBinding (Label.TextProperty, new Binding ("Content.Subtitle"));
+			Text = new Label();
+			Text.SetBinding(Label.TextProperty, new Binding("Content.Text"));
 		}
 
 		protected override void SetupView ()
 		{
 			var attachment = BindingContext as Attachment;
-			Text.TextColor = SubText.TextColor = IsFromMe ? Color.Black : Color.White;
+			Title.TextColor = SubText.TextColor = IsFromMe ? Color.Black : Color.White;
 			AddImages (attachment);
-			Children.Add (Text);
+			Children.Add (Title);
 			Children.Add (SubText);
+			Children.Add(Text);
 			AddButtons (attachment);
 		}
 	}
