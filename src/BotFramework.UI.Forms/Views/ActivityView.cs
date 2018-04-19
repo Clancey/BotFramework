@@ -103,14 +103,7 @@ namespace BotFramework.UI
 
 		protected virtual void ResetView ()
 		{
-			if(Frame.Content != null)
-				Frame.Content = null;
-		}
-
-		protected override void OnChildMeasureInvalidated ()
-		{
-			base.OnChildMeasureInvalidated ();
-			ParentCell?.ForceUpdateSize ();
+			Frame.Content = null;
 		}
 
 	}
