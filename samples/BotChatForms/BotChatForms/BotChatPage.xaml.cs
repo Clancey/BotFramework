@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections;
@@ -49,18 +51,29 @@ namespace BotChatForms
 			currentConversation = await ConversationManager.StartConversation (name, "djdOSzcO3dY.cwA.vbU.S2mx6ruLXxMlGQ2FnBcoXOcr9-sAJouXeDZH8JhbA58");
 			currentConversation.CardActionTapped = HandleCardActionTapped;
 			MessageList.ItemsSource = currentConversation.Conversation.Messages;
+            currentConversation.Conversation.Messages.CollectionChanged += Messages_CollectionChanged;
 			StartStopButton.Text = "End Conversation";
 		}
 
-		void HandleCardActionTapped (CardAction action)
-		{
-			switch (action.Type) {
-			case CardActionType.OpenUrl:
-				Device.OpenUri (new Uri (action.Value));
-				break;
-			}
-			Debug.WriteLine ($"Unhandled tap: {action.Value}");
-		}
+        void Messages_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var lastItem = currentConversation.Conversation.Messages.LastOrDefault();
+            if (lastItem != null)
+                Device.BeginInvokeOnMainThread(() => MessageList.ScrollTo(lastItem, ScrollToPosition.Start, true));
+        }
+
+        void HandleCardActionTapped(CardAction action)
+        {
+            switch (action.Type)
+            {
+                case CardActionType.OpenUrl:
+                    Device.OpenUri(new Uri(action.Value));
+                    break;
+                default:
+                    Debug.WriteLine($"Unhandled tap: {action.Value}");
+                    break;
+            }
+        }
 
 		void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
 		{
