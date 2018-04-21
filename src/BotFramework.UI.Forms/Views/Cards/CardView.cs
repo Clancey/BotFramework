@@ -17,6 +17,7 @@ namespace BotFramework.UI
 		}
 
 		public bool IsFromMe { get; set; }
+        public ViewCell HostingCell { get; set; }
 
 		protected virtual void SetupView ()
 		{

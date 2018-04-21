@@ -4,14 +4,6 @@ using Xamarin.Forms;
 
 namespace BotFramework.UI
 {
-    public class ActivityViewCell : ViewCell
-	{
-		public ActivityViewCell ()
-		{
-			View = new ActivityView { ParentCell = this };
-		}
-	}
-    
     public class ActivityView : ContentView
 	{
 		WeakReference parentCell;
@@ -88,8 +80,11 @@ namespace BotFramework.UI
 			var view = ActivityTemplate?.CreateContent (activity,this) as View ?? new Label ();
 
 			var messageView = view as IMessageContext;
-			if (messageView != null)
-				messageView.IsFromMe = activity.IsFromMe;
+            if (messageView != null)
+            {
+                messageView.IsFromMe = activity.IsFromMe;
+                messageView.HostingCell = ParentCell;
+            }
 
 			view.BindingContext = activity;
 			
