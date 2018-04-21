@@ -15,6 +15,7 @@ namespace BotFramework.UI
 		}
 
 		public bool IsFromMe { get; set; }
+        public ViewCell HostingCell { get; set; }
 
 		Label Text;
 		public MessageView ()
@@ -37,18 +38,24 @@ namespace BotFramework.UI
 			if (message == null)
 				return;
 			Text.TextColor = IsFromMe ? Color.Black : Color.White;
-			if (message.Attachments != null)
-				foreach (var a in message.Attachments) {
-					Children.Add (CreateView (a));
-				}
+            if (message.Attachments != null)
+                foreach (var a in message.Attachments)
+                {
+                    var child = CreateView(a);
+                    child.SizeChanged += Child_SizeChanged;
+                    Children.Add(child);
+                }
 		}
 
 		protected virtual View CreateView (Attachment attachement)
 		{
 			var view = AttachmentTemplate?.CreateContent (attachement, this) as View ?? new Label ();
 			var messageView = view as IMessageContext;
-			if (messageView != null)
-				messageView.IsFromMe = IsFromMe;
+            if (messageView != null)
+            {
+                messageView.IsFromMe = IsFromMe;
+                messageView.HostingCell = HostingCell;
+            }
 
 			view.BindingContext = attachement;
 			return view;
@@ -56,7 +63,15 @@ namespace BotFramework.UI
 
 		protected virtual void ResetView ()
 		{
+            foreach (var childView in Children)
+                childView.SizeChanged -= Child_SizeChanged;
+
 			Children.Clear ();
 		}
+
+        private void Child_SizeChanged(object sender, EventArgs e)
+        {
+            HostingCell?.ForceUpdateSize();
+        }
 	}
 }
